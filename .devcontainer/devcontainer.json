@@ -1,13 +1,21 @@
 {
-    "name": "Screeps Development",
-    "image": "mcr.microsoft.com/devcontainers/typescript-node:16",
-    "postCreateCommand": "npm install",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "dbaeumer.vscode-eslint",
-                "esbenp.prettier-vscode"
-            ]
-        }
+  "name": "Screeps Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "SCREEPS_TOKEN": "${{ secrets.SCREEPS_TOKEN }}"
     }
+  },
+  "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    }
+  },
+  "features": {
+    "node": {
+      "version": "12" // Specify the desired Node.js version here
+    }
+  }
 }
